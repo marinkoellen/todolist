@@ -1,14 +1,20 @@
-import React from "react";
-import TodoItem from "./components/TodoItem"
+import React, { useState } from "react";
+import ToDoItem from "./components/TodoItem";
 
 
 function App() {
+  // variables
+  const [todos, setToDos] = useState([
+    "Finish plus project",
+    "Go to dog beach",
+    "Make Lasanga",
+  ]);
   return(
   <div>
-    <h1>My todo list</h1>;
-    <TodoItem todo="Finish plus project."/> 
-    <TodoItem todo="Go to dog beach."/> 
-    <TodoItem todo="Make lasanga."/> 
+    <h1>My todo list</h1>
+    {todos.map((todo, index)=>(
+      <ToDoItem todo ={todo} key={index}/>
+    ))}
   </div>
   ) 
 }
