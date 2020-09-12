@@ -13,7 +13,7 @@ function App() {
   ]);
 
 
-  //method
+  //methods
   const addTodo = (text) => {
     //unpacking existing todos and adding new to do text to array
     const newTodos = [...todos, { text }];
@@ -25,6 +25,12 @@ function App() {
     const newTodos = [...todos];
     newTodos[index].isCompleted = true;
     setToDos(newTodos);
+  };
+
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setToDos(newTodos);
   }
 
   return(
@@ -33,7 +39,8 @@ function App() {
       <h1>My todo list</h1>
       {todos.map((todo, index)=>(
         <ToDoItem todo ={todo} key={index} index={index}
-        completeTodo={completeTodo}/>
+        completeTodo={completeTodo}
+        removeTodo={removeTodo}/>
       ))}
       <ToDoForm addTodo={addTodo} />
     </div>
